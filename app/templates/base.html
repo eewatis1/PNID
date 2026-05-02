@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>PNID Control System</title>
+    <style>
+        body { background: #0d1117; color: #c9d1d9; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; min-height: 100vh; margin: 0; }
+        header { width: 100%; padding: 20px; text-align: center; background: #161b22; border-bottom: 1px solid #30363d; }
+        .container { width: 90%; max-width: 600px; margin-top: 50px; background: #161b22; padding: 20px; border-radius: 8px; border: 1px solid #30363d; }
+        input { background: #0d1117; border: 1px solid #30363d; color: white; padding: 10px; border-radius: 4px; width: 60%; }
+        button { background: #238636; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; }
+        ul { list-style: none; padding: 0; }
+        li { padding: 10px; border-bottom: 1px solid #30363d; }
+    </style>
+</head>
+<body>
+    <header><h1>PNID Infrastructure</h1></header>
+    <div class="container">{% block content %}{% endblock %}</div>
+</body>
+</html>

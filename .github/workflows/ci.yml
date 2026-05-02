@@ -5,7 +5,6 @@ on: [push, pull_request]
 jobs:
   test-and-report:
     runs-on: ubuntu-latest
-    # Задача 3: Мультиверсійне тестування
     strategy:
       matrix:
         python-version: ["3.10", "3.11"]
@@ -24,12 +23,9 @@ jobs:
           pip install flask pytest pytest-html flake8
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-      # Задача 2: Перевірка стилю коду (Linting)
       - name: Lint with flake8
         run: flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
 
-      # Задача 1: Автоматичне тестування
-      # Задача 5: Автоматичний HTML-звіт
       - name: Run tests and generate report
         run: pytest --html=report.html --self-contained-html
 
@@ -40,7 +36,6 @@ jobs:
           name: report-python-${{ matrix.python-version }}
           path: report.html
 
-  # Задача 4: Збірка Docker-контейнера
   build-docker:
     needs: test-and-report
     runs-on: ubuntu-latest

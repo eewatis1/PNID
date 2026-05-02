@@ -1,17 +1,23 @@
-<!DOCTYPE html>
-<html lang="uk">
-<head>
-    <meta charset="UTF-8">
-    <title>PNID Project</title>
-    <style>
-        body { background: #121212; color: white; font-family: sans-serif; text-align: center; padding-top: 50px; }
-        .box { border: 2px solid #3d44db; display: inline-block; padding: 20px; border-radius: 10px; }
-    </style>
-</head>
-<body>
-    <div class="box">
-        <h1>Сайт проєкту PNID 🚀</h1>
-        <p>Ця сторінка пройшла автоматичну перевірку GitHub Actions.</p>
+{% extends "base.html" %}
+{% block content %}
+    <h2>Керування модулями</h2>
+    <div style="margin-bottom: 20px;">
+        <input type="text" id="name" placeholder="Назва модуля...">
+        <button onclick="save()">Додати</button>
     </div>
-</body>
-</html>
+    <ul id="list">
+        {% for item in items %}
+            <li>{{ item[0] }}</li>
+        {% endfor %}
+    </ul>
+    <script>
+        function save() {
+            const name = document.getElementById('name').value;
+            fetch('/api/add', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({name: name})
+            }).then(() => location.reload());
+        }
+    </script>
+{% endblock %}
